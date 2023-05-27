@@ -91,6 +91,8 @@ How my card is different than the original animecards:
 
 ## Yomichan
 1. Download and install yomichan: [chrome](https://chrome.google.com/webstore/detail/yomichan/ogmnaimimemjmbakcfefmnahgdfhfami), [firefox](https://addons.mozilla.org/en-US/firefox/addon/yomichan/)
+    - **MAINTAINER NOTE**: Do not use Yomichan from Firefox's add-ons store, because it is very outdated.
+        Instead, use `a708116f79104891acbd-22.10.23.0.xpi` from [Yomichan's Releases page](https://github.com/FooSoft/yomichan/releases/tag/22.10.23.0)
 1. Download your preferred dictionary pack. I use [shoui Yomichan Dictionaries](https://learnjapanese.moe/monolingual/#getting-and-using-monolingual-dictionaries). The above pack include monolingual, bilingual, frequency, pitch accent and kanji dictionary. Alternatively, you may also download dictionary from [Epistularum's dictionary pack](https://anacreondjt.gitlab.io/docs/dicts/).
 1. Click on the Yomichan extension and click on the settings icon. Enable `Advanced` option on the bottom left.
     ![](assets/yomichan_settings.jpg)

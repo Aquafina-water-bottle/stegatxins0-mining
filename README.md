@@ -14,7 +14,9 @@ ShareX with Anki-Connect to automatically export audio and images into the most 
 - If you have any questions, please make a thread in the questions forum in
     [TheMoeWay](https://learnjapanese.moe/join/).
 
-Please feel free to contribute! I will likely not be maintaining this repository outside of merging pull requests, so if you want any changes, please submit a pull request. Note that I recommend against contributing major reworks of sections or adding completely new software, even if it is the new best thing. This is in order to maintain this repo's main purpose of archiving the guide. If you consider something to be out-dated, instead of changing this guide, link to a different page that describes the better alternative.
+Please feel free to contribute! I will likely not be maintaining this repository outside of merging pull requests, so if you want any changes, please submit a pull request.
+
+I recommend against contributing major reworks of sections, even if is the current best thing. This is in order to maintain this repo's main purpose of archiving the guide. If you consider something to be out-dated, instead of changing this guide, link to a different page that describes the alternative setup. These will be marked with "MAINTAINER NOTE".
 
 > **Note**:
 > This is NOT *my* mining setup (mine can be found
@@ -110,6 +112,7 @@ How my card is different than the original animecards:
     |Meta||see `Kindle` section|
 
 1. Click `Configure Anki card templates…` under `Anki` section. Replace all the text with [this](https://pastebin.com/raw/TeSJc6ij).
+    - **MAINTAINER NOTE**: `{test}` from these handlebars will break some modern dictionaries. An alternative to these handlebars is the [JPMN Handlebars Package](https://aquafina-water-bottle.github.io/jp-mining-note-prerelease/jpmnhandlebars/).
 1. Click `Configure custom CSS` under `Popup Appearance`. Use [my CSS](https://pastebin.com/raw/RxB0CEnS) (modified version of [full-nord-theme](https://learnjapanese.moe/yomicss/#example-full-nord-theme)) or create your own Yomichan CSS [here](https://learnjapanese.moe/yomicss/). Paste your CSS in `Popup CSS`.
 1. To use Yomichan on word such as 懇々, Click `Configure custom text replacement patterns` under `Translation`. Click `Add` and fill in with these values:
     Pattern: `(.)々`

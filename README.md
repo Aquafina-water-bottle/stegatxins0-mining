@@ -11,6 +11,8 @@ ShareX with Anki-Connect to automatically export audio and images into the most 
 - [Un-changed backup of the original](https://github.com/Aquafina-water-bottle/stegatxins0-mining/tree/original)
 - Also see: [Lazy Guide](https://rentry.co/lazyXel). I personally consider the Lazy Guide to be a more
     up-to-date version of this guide.
+- If you have any questions, please make a thread in the questions forum in
+    [TheMoeWay](https://learnjapanese.moe/join/).
 
 Please feel free to contribute! I will likely not be maintaining this repository outside of merging pull requests, so if you want any changes, please submit a pull request. Note that I recommend against contributing major reworks of sections or adding completely new software, even if it is the new best thing. This is in order to maintain this repo's main purpose of archiving the guide. If you consider something to be out-dated, instead of changing this guide, link to a different page that describes the better alternative.
 

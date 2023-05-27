@@ -5,8 +5,16 @@ One of the most notable changes this introduced to the Japanese learning communi
 ShareX with Anki-Connect to automatically export audio and images into the most recently added card.
 - [Original link](https://rentry.co/mining)
 - [Backup of the original](https://github.com/Aquafina-water-bottle/stegatxins0-mining/tree/original)
+- This repository wasn't made for nothing. Please feel free to contribute! Anything from simple things like fixing typos / dead links, to adding new features are all highly appreciated!
 
-**Requirement**:
+> *Note*:
+> This is NOT *my* mining setup (mine can be found
+> [here](https://aquafina-water-bottle.github.io/jp-mining-note/)),
+> but the language used here may still refer to first person, as this was originally
+> written by stegatxins0 himself.
+
+
+**Requirements**:
 - Language that you are learning: Japanese
 - Platform: Windows 10
 
@@ -55,20 +63,20 @@ How my card is different than the original animecards:
 - field for meta/source (see `Kindle` section)
 - pitch accent graph moved to above definition
 - you can edit definition and hint when reviewing (if you have `Edit Field During Review` installed)
-- add option to change [this](https://i.imgur.com/3y3fGET.jpeg) to [this](https://i.imgur.com/l65Cjmr.jpeg) by changing `{kana:Reading}` to `{furigana:Reading}`
+- add option to change [this](assets/efdr_original.jpg) to [this](assets/efdr_changed.jpg) by changing `{kana:Reading}` to `{furigana:Reading}`
 
 ## Yomichan
 1. Download and install yomichan: [chrome](https://chrome.google.com/webstore/detail/yomichan/ogmnaimimemjmbakcfefmnahgdfhfami), [firefox](https://addons.mozilla.org/en-US/firefox/addon/yomichan/)
 1. Download your preferred dictionary pack. I use [shoui Yomichan Dictionaries](https://learnjapanese.moe/monolingual/#getting-and-using-monolingual-dictionaries). The above pack include monolingual, bilingual, frequency, pitch accent and kanji dictionary. Alternatively, you may also download dictionary from [Epistularum's dictionary pack](https://anacreondjt.gitlab.io/docs/dicts/).
 1. Click on the Yomichan extension and click on the settings icon. Enable `Advanced` option on the bottom left. 
-	![](https://i.imgur.com/CAkEPrV.jpeg)
+	![](assets/yomichan_settings.jpg)
 1. Click `Configure installed and enabled dictionaries` under `Dictionaries` Import your preferred dictionary. Then, sort the order in `priority`. The higher the number, the higher the position of dictionary. For more information on recommended dictionary see [this](https://learnjapanese.moe/monolingual/#recommended-dictionaries).
 
 1. Enable `Enable Anki integration` and click on `Configure Anki card format` under `Anki` section. Make sure you have Anki opened and `AnkiConnect` addon installed in Anki or read the Anki section. 
 	|Field|Value|Extra Note|
 	|---|---|---|
 	|Word|`{expression}`||
-	|Reading|`{furigana-plain}`|`{reading}` work too but if you're one of those (not me) who use autistic font you can easily set your Anki template to look like [this](https://i.imgur.com/l65Cjmr.jpeg) ([the default one](https://i.imgur.com/3y3fGET.jpeg)) by changing `{kana:Reading}` to `{furigana:Reading}` in your Anki template|	
+	|Reading|`{furigana-plain}`|`{reading}` work too but if you're one of those (not me) who uses handwriting fonts, you can easily set your Anki template to look like [this](assets/handwriting_font.jpg) ([the default one](assets/default_font.jpg)) by changing `{kana:Reading}` to `{furigana:Reading}` in your Anki template|	
 	|Glossary|`{test}`|`{clipboard-text}` if you want to manually copy definition by `ctrl + c`|
 	|Sentence|`{cloze-prefix}<b>{cloze-body}</b>{cloze-suffix}`|`{sentence}` if you don't want to make the main vocab **bold**|	
 	|Picture||see `ShareX` section|	
@@ -85,12 +93,12 @@ How my card is different than the original animecards:
 	Pattern: `(.)々`
 	Replacement: `$1$1`
 1. Make sure you have `Yomichan Forvo Server` addon installed in Anki. If not see `Anki` section. Click `Configure audio playback sources` under `Audio`. Next to `Custom audio source`, select `JSON` for type and insert `http://localhost:8770/?expression={expression}&reading={reading}` in URL. Click `Add` to add a new row. Order it to look like this: (you can also put `Custom` at first if you prefer)
-	![](https://i.imgur.com/i6EIu7q.jpg)
+	![](assets/yomichan_forvo_server.jpg)
 1. Using Yomichan in Yomichan is helpful when reading monolingual definition. Change the following settings:
 	- check `Allow scanning popup content` under `Popup`.
 	- change `Maximum number of child popups` under `Allow scanning popup content` under `Popup` to `9999`.
 	- check `Allow scanning popup source terms` under `Allow scanning popup content` under `Popup`.
-![](https://i.imgur.com/oTlhUJC.jpg)
+![](assets/yomichan_popups.jpg)
 1. Change some settings
 	- uncheck `Show the welcome guide on browser startup` under `General`
 	- set `Scan delay` under `Scanning` to `0`
@@ -104,20 +112,20 @@ How my card is different than the original animecards:
 
 ## ShareX
 1. Download and install ShareX from [here](https://getsharex.com/). 
-1. Right click on ShareX icon and click `Hotkey Settings`
-	![](https://i.imgur.com/Pr8htZ8.jpeg)
+1. Right click on ShareX icon and click `Hotkey Settings` <br>
+	![](assets/sharex_hotkey_settings.jpg)
 #### Hotkey for Screenshot
 1. Click `add`. Close the windows and select None on the right hand side and define key combination for screenshots. Mine is `F6`
-	![](https://i.imgur.com/pMQGZlT.jpg)
+	![](assets/sharex_screenshot_hotkey.jpg)
 1. Click on the settings icon on the left hand side. 
-	![](https://i.imgur.com/j894hD2.jpg)
+	![](assets/sharex_screenshot_hotkey_settings.jpg)
 1. Select `Capture region` for `Task`. You can also select `Capture region (Transparent)`. The difference is `Capture region` freeze screen while `Capture region (Transparent)` does not.
-	![](https://i.imgur.com/28hU9nO.jpeg)
+	![](assets/sharex_screenshot_capture_region.jpg)
 1. Check `Override after capture settings`. Uncheck all and check the followings: `Save image to file`, `Perform actions`.
 1. Check `Override screenshot folder`. Click `Browse` and select Anki collection media location (usually something following this format `C:\Users\______\AppData\Roaming\Anki2\______\collection.media` ).
 1. Insert `anki-screenshot` or anything you want in description .
 1. Click on `Image` tab. Check `Override image settings`. Under `Image format` select `JPEG` to save space.
-	![](https://i.imgur.com/qq6J2pt.jpeg)
+	![](assets/sharex_screenshot_jpeg.jpg)
 1. Click on `Actions` tab. Check `Override actions`. Click `Add`. A new window will pop up. Fill in the following values:
 **Name**: `anki-screenshot` (or anything you want)
 **File path**: 
@@ -156,23 +164,23 @@ If you want your card to be as high quality as possible, you might find yourself
  
 #### Hotkey for Audio
 1. Click `add`. Close the windows and select None on the right hand side and define key combination for screenshots. Mine is `F7`
-	![](https://i.imgur.com/qrIjPDf.jpeg)
+	![](assets/sharex_audio_hotkey.jpg)
 1. Click on the settings icon on the left hand side. 
-	![](https://i.imgur.com/j894hD2.jpg)
+	![](assets/sharex_audio_hotkey_settings.jpg)
 1. Select `Start/Stop screen recording using pre configured region` or  `Start/Stop screen recording using active window region`  for `Task`. I recommend using `pre configured region` so that you can see the recording status in full screen. ShareX have a few seconds of delay before it start recording, when it start recording the dotted line will change from red to green. You cannot see this in full screen, that's why I recommend preconfigured region. The region you select later won't matter if you record audio only without video, because **ShareX record audio from all application in your desktop instead of audio from a specific application**. 
-	![](https://i.imgur.com/CIZgP56.jpeg)
+	![](assets/sharex_audio_predefined_region.jpg)
 1. Check `Override after capture settings`. Uncheck all and check the followings: `Save image to file`, `Perform actions`.
 1. Check `Override screenshot folder`. Click `Browse` and select Anki collection media location (usually something following this format `C:\Users\______\AppData\Roaming\Anki2\______\collection.media` ).
 1. Insert `anki-audio` or anything you want in description .
 1. Click on `Capture` tab. Check `Override capture settings`. 
 1. Click `Select region` under `Capture` tab. Select anywhere in the screen, it doesn't really matter (see explanation above). If you select `active region` in `Task`, you can skip this step.
 1. Click on `Screen Recorder` tab. Click on `Screen recording options` and click on Download to download FFMPEG.
-	![](https://i.imgur.com/BJRQJpN.jpeg)
+	![](assets/sharex_audio_ffmpeg_path.jpg)
 1. After finish downloading, Click `Install recorder devices`
 1. Under `Sources` select `none` for video source and `virtual-audio-capturer` for audio source. 
-	![](https://i.imgur.com/YWmrlJ2.jpg)
+	![](assets/sharex_audio_sources.jpg)
 1. Change `Audio codec` to `MP3`
-	![](https://i.imgur.com/Hdkr7k4.jpg)
+	![](assets/sharex_audio_codec.jpg)
 1. At `Command line preview`, check `Use custom commands` and replace everything in text with the command below to trim silence and reduce the volume a bit. ([Source](https://animecards.site/setupsharex/))
 ```
 -y -rtbufsize 100M -f dshow -i audio="virtual-audio-capturer" -c:a libmp3lame -filter:a "volume=0.9" -af silenceremove=1:0:-50dB -qscale:a 4 "$output$"
@@ -221,15 +229,15 @@ C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
 1. Download [this option file](https://anonfiles.com/t8deY6w3ue)) to `Capture2Text` directory.  (Source: AJATT Discord Server)
 1. Copy `Capture2Text.exe` from `Capture2Text` directory. Open the Run dialog box by pressing `Win + r`. Type `shell:startup` and press `Enter`. An explorer window will pop up. Right click and click `Paste shortcut`. A message will pop-up if this is your first time running it. Click `OK`.
 1. Double click on the shortcut of `Capture2Text.exe`. Right click on the Capture2Text icon in taskbar tray. Deselect `Show Popup Window`. Right click again and click `Settings`.
-	![](https://i.imgur.com/qODqA10.jpeg)
+	![](assets/capture2text_settings.jpg)
 1. Define your preferred hotkey for `Start OCR Capture` in `Hotkeys`. Mine is `F5`. I also set `Bubble Capture` to `F4` for reading Manga. You can change all other options to `<Unmapped>` because we are not going to use them.
-	![](https://i.imgur.com/CD3UZKy.jpeg)
+	![](assets/capture2text_hotkeys.jpg)
 1. Click `OCR 1` tab. Change `Current OCR Language` to `Japanese`. 
 1. Under `Miscellaneous`, set `Text Orientation` to `auto` (default). If auto is selected, horizontal will be used when the capture width is more than twice the height, otherwise vertical will be used.
 1. Select the option file you downloaded in step 4 in `Tesseract Config File` under `Miscellaneous`
-	![](https://i.imgur.com/r9pHY4C.jpg)
+	![](assets/capture2text_tesseract_config.jpg)
 1. The `Quick-Access Languages` doesn't matter if you do not use other language. If you are using OCR for language such as Japanese, you would want to replace space with nothing for easier Yomichan lookup. Go to `Replace` tab, insert "` `" (space) at first column at any empty row, and do not edit the second column.
-	![](https://i.imgur.com/BALE9Gt.jpg)
+	![](assets/capture2text_quick_access_languages.jpg)
 1. Click `OK` after you're done.
 
 ## MPV
@@ -308,10 +316,10 @@ local IMAGE_FIELD = "Picture"
 1. Download `ActivityWatch` windows installer from [here](https://activitywatch.net/downloads/). 
 1. Launch `ActivityWatch` if not launched.
 1. Right click on activitywatch icon in taskbar and click `Open Dashboard`.
-	![](https://i.imgur.com/QmuzG27.jpeg)
+	![](assets/activity_watch_open_dashboard.jpg)
 1. Click on `Settings` at the top right corner.
 1. Change the Categorization to however you like. You have to update this everytime you play a new visual novel or read a new book. Here's mine.
-	![](https://i.imgur.com/gaNR6n8.jpeg)
+	![](assets/activity_watch_categorization.jpg)
 1. Note that sometimes when you can't click on `save` you have to refresh the page.
 1. You might also want to install browser extensions ([chrome](https://chrome.google.com/webstore/detail/nglaklhklhcoonedhgnpgddginnjdadi/), [firefox](https://addons.mozilla.org/en-US/firefox/addon/aw-watcher-web/)) to track website domain. 
 
@@ -415,7 +423,7 @@ Register-ScheduledTask WindowsDesktopSwitcher -InputObject $D
 1. In Anki, Click `Add`
 1. Select `Mining` for `type`. Choose any deck you want because it won't matter. We won't add a new card and we are only using anki-forvo-dl setup feature.
 1. Click forvo logo on top right or press `ctrl + f`
-	![](https://i.imgur.com/X25VbPB.jpg)
+	![](assets/anki_forvo_dl_logo.jpg)
 1. Select `Word` for `Select the field whose text should be used to search on Forvo`. Click `Continue`
 2. Select `Audio` for `Select the field where the audio should be put in`. Click `Continue`
 3. Select `Japanese` for `Language Select`. Click `Continue`

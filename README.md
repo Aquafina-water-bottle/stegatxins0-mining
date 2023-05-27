@@ -9,7 +9,8 @@ ShareX with Anki-Connect to automatically export audio and images into the most 
 
 - **Original site: [https://rentry.co/mining](https://rentry.co/mining)**
 - [Un-changed backup of the original](https://github.com/Aquafina-water-bottle/stegatxins0-mining/tree/original)
-- Also see: [Lazy Guide](https://rentry.co/lazyXel)
+- Also see: [Lazy Guide](https://rentry.co/lazyXel). I personally consider the Lazy Guide to be a more
+    up-to-date version of this guide.
 
 Please feel free to contribute! Anything from simple things like fixing grammatical issues / dead links, to adding new features are all highly appreciated! I will likely not be maintaining this repository outside of merging pull requests, so if you want any changes, please submit a pull request.
 

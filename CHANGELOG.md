@@ -4,7 +4,11 @@
 - Moved the guide into this github repository, primarily to open it for contribution and better archival purposes.
 - Downloaded all imgur images into `assets/`
 - Reworded some minor things, fixed some grammatical issues
-- Changed header.
+- Changed header
+- Replaced all `\t` to 4 spaces
+- Fixed formatting to work with Github
+- Changed ffmpeg flags to normalize the audio instead of reduce the volume
+    - Added original and fixed versions as well
 
 ## 18 July 2021
 Update [hotkey for audio](https://rentry.co/mining#hotkey-for-audio) guide to use preconfigured region so that recording status is visible in full screen. Add script to replay only the first 5 seconds of recorded audio.

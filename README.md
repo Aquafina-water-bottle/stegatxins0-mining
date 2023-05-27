@@ -1,16 +1,17 @@
-# My Mining Setup
+# Stegatxins0's Mining Setup
 
-Follow the guide if you want to get identical mining setup to mine. 
-
-#### Changelog
-18 July 2021: Update [hotkey for audio](https://rentry.co/mining#hotkey-for-audio) guide to use preconfigured region so that recording status is visible in full screen. Add script to replay only the first 5 seconds of recorded audio.
-11 June 2021: Add option to [play audio after capture](https://rentry.co/mining#hotkey-for-audio) for ShareX audio powershell script.
-11 June 2021: Add [alternative script](https://rentry.co/mining#alternative-add-clipboard-text-to-sentence-field) for ShareX to add clipboard text to sentence field. 
-6 June 2021: Change `float` to `Long` in [ShareX powershell script](https://rentry.co/mining#hotkey-for-screenshot) to fix the problem where script sometimes fail to add screenshot/audio to Anki.
+This is a public, contribution-open version of stegatxins0's popular guide to sentence mining.
+One of the most notable changes this introduced to the Japanese learning community is combining
+ShareX with Anki-Connect to automatically export audio and images into the most recently added card.
+- [Original link](https://rentry.co/mining)
+- [Backup of the original](https://github.com/Aquafina-water-bottle/stegatxins0-mining/tree/original)
 
 **Requirement**:
 - Language that you are learning: Japanese
 - Platform: Windows 10
+
+---
+
 
 ## Anki
 
@@ -37,7 +38,7 @@ Follow the guide if you want to get identical mining setup to mine.
 3. Copy the `PassFail (JP)` folder to `%APPDATA%\Anki2\addons21` (paste this in your file explorer address bar).
 
 #### Puppy Reinforcement (Completely optional)
-1. [This](https://i.imgur.com/t5ePpjr.png) is the image that I use. Download and copy or move it to `%APPDATA%\Anki2\addons21\1722658993\user_files`
+1. [This](assets/puppy_reinforcement.png) is the image that I use. Download and copy or move it to `%APPDATA%\Anki2\addons21\1722658993\user_files`
 2. In Anki, go to `Tools > Add-ons`. Select `Puppy Reinforcement`. Click `Config`. 
 3. Change `disable_default_images": false,` to `disable_default_images": true,`
 

@@ -191,6 +191,7 @@ If you want your card to be as high quality as possible, you might find yourself
     (Thanks to [Mansive#0727](https://discord.com/channels/617136488840429598/1110407709876027432/1110411717105684581) and [Quizmaster](https://animecards.site/media/#hotkey-for-audio) for these flags!)
     <details>
     <summary>Alternatives <i>(click here)</i></summary>
+
     - The original (does not correctly reduce the volume):
         ```
         -y -rtbufsize 100M -f dshow -i audio="virtual-audio-capturer" -c:a libmp3lame -filter:a "volume=0.9" -af silenceremove=1:0:-50dB -qscale:a 4 "$output$"
@@ -201,6 +202,7 @@ If you want your card to be as high quality as possible, you might find yourself
         -y -rtbufsize 100M -f dshow -i audio="virtual-audio-capturer" -c:a libmp3lame -af "silenceremove=1:0:-50dB, volume=0.9" -qscale:a 4 "$output$"
         ```
         * Thanks to [Mansive#0727](https://discord.com/channels/617136488840429598/778430038159655012/980272369698500609) for this fix!
+
     </details>
 1. Close the window. Click on `Actions` tab. Check `Override actions`. Click `Add`. A new window will pop up. Fill in the following values:
     - **Name**: `anki-audio` (or anything you want)

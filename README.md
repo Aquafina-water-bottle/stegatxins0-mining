@@ -1,6 +1,6 @@
 # Stegatxins0's Mining Setup
 
-This simply serves to be a contribution-open version of stegatxins0's popular guide to sentence mining,
+This simply serves to be a open-contribution version of stegatxins0's popular guide to sentence mining,
 because the original guide no longer seems to be maintained.
 If stegatxins0 ever sees this, thank you for creating the original guide!
 

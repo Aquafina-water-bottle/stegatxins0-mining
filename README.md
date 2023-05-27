@@ -1,17 +1,21 @@
 # Stegatxins0's Mining Setup
 
-This is a public, contribution-open version of stegatxins0's popular guide to sentence mining.
+This simply serves to be a contribution-open version of stegatxins0's popular guide to sentence mining,
+because the original guide no longer seems to be maintained.
+If stegatxins0 ever sees this, thank you for creating the original guide!
+
 One of the most notable changes this introduced to the Japanese learning community is combining
 ShareX with Anki-Connect to automatically export audio and images into the most recently added card.
-- [Original link](https://rentry.co/mining)
-- [Backup of the original](https://github.com/Aquafina-water-bottle/stegatxins0-mining/tree/original)
-- This repository wasn't made for nothing. Please feel free to contribute! Anything from simple things like fixing typos / dead links, to adding new features are all highly appreciated!
+
+- [**Original site**](https://rentry.co/mining)
+- [Un-changed backup of the original](https://github.com/Aquafina-water-bottle/stegatxins0-mining/tree/original)
+- This repository wasn't made for nothing. Please feel free to contribute! Anything from simple things like fixing grammatical issues / dead links, to adding new features are all highly appreciated!
 
 > *Note*:
 > This is NOT *my* mining setup (mine can be found
 > [here](https://aquafina-water-bottle.github.io/jp-mining-note/)),
-> but the language used here may still refer to first person, as this was originally
-> written by stegatxins0 himself.
+> but the language used within this guide may still refer to first person.
+> This is because the guide was originally written by stegatxins0 himself.
 
 
 **Requirements**:

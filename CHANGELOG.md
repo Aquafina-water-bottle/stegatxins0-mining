@@ -9,6 +9,7 @@
 - Fixed formatting to work with Github
 - Changed ffmpeg flags to normalize the audio instead of reduce the volume
     - Added original and fixed versions as well
+- Added bookmark section
 
 ## 18 July 2021
 Update [hotkey for audio](https://rentry.co/mining#hotkey-for-audio) guide to use preconfigured region so that recording status is visible in full screen. Add script to replay only the first 5 seconds of recorded audio.

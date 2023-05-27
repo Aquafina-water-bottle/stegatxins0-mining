@@ -9,7 +9,9 @@ ShareX with Anki-Connect to automatically export audio and images into the most 
 
 - **Original site: [https://rentry.co/mining](https://rentry.co/mining)**
 - [Un-changed backup of the original](https://github.com/Aquafina-water-bottle/stegatxins0-mining/tree/original)
-- This repository wasn't made for nothing. Please feel free to contribute! Anything from simple things like fixing grammatical issues / dead links, to adding new features are all highly appreciated!
+- Also see: [Lazy Guide](https://rentry.co/lazyXel)
+
+Please feel free to contribute! Anything from simple things like fixing grammatical issues / dead links, to adding new features are all highly appreciated! I will likely not be maintaining this repository outside of merging pull requests, so if you want any changes, please submit a pull request.
 
 > **Note**:
 > This is NOT *my* mining setup (mine can be found
@@ -23,6 +25,20 @@ ShareX with Anki-Connect to automatically export audio and images into the most 
 - Platform: Windows 10
 
 
+## Bookmark
+- [Anki](#anki)
+- [Yomichan](#yomichan)
+- [ShareX](#sharex)
+    - [Hotkey for Screenshot](#hotkey-for-screenshot)
+    - [Hotkey for Audio](#hotkey-for-audio)
+- [Capture2Text](#capture2text)
+- [MPV](#mpv)
+- [Browser](#browser)
+- [ActivityWatch](#activitywatch)
+- [Virtual Desktop](#virtual-desktop)
+- [Visual Novel](#visual-novel)
+- [Kindle](#kindle)
+- [Other](#other-tools-i-used)
 
 ## Anki
 

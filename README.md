@@ -1,4 +1,5 @@
 # Stegatxins0's Mining Setup
+<sup>AKA "My Mining Setup"</sup>
 
 This simply serves to be a open-contribution version of stegatxins0's popular guide to sentence mining,
 because the original guide no longer seems to be maintained.

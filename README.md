@@ -114,9 +114,437 @@ How my card is different than the original animecards:
     |Hint||manual input|
     |Meta||see `Kindle` section|
 
-1. Click `Configure Anki card templates…` under `Anki` section. Replace all the text with [this](https://pastebin.com/raw/TeSJc6ij).
+1. Click `Configure Anki card templates…` under `Anki` section. Replace all the text with the following:
+    <details>
+    <summary>Handlebars <i>(click here)</i></summary>
+
+    ```handlebars
+    {{#*inline "test"}}
+        {{~#scope~}}
+            {{~#set "first-dictionary" null}}{{/set~}}
+            {{~#if modeKanji~}}
+                ...
+            {{~else if (op "||" group merge)~}}
+                {{~#each definition.definitions~}}
+                    {{~#if (op "===" null (get "first-dictionary"))~}}
+    {{~#set "first-dictionary" dictionary~}}{{~/set~}}
+                    {{~/if~}}
+                    {{~#if (op "===" dictionary (get "first-dictionary"))~}}
+    {{> glossary-single brief=../brief compactGlossaries=../compactGlossaries noDictionaryTag=true data=../.}}
+                    {{~/if~}}
+                {{~/each~}}
+            {{~else~}}
+                {{~> glossary-single definition brief=brief compactGlossaries=compactGlossaries noDictionaryTag=true data=.~}}
+            {{~/if~}}
+        {{~/scope~}}
+    {{/inline}}
+
+    {{#*inline "glossary-single"}}
+        {{~#unless brief~}}
+            {{~#scope~}}
+                {{~#set "any" false}}{{/set~}}
+                {{~#each definitionTags~}}
+                    {{~#if (op "||" (op "!" @root.compactTags) (op "!" redundant))~}}
+                        {{~#if (get "any")}}, {{else}}<i>({{/if~}}
+                        {{name}}
+                        {{~#set "any" true}}{{/set~}}
+                    {{~/if~}}
+                {{~/each~}}
+                {{~#unless noDictionaryTag~}}
+                    {{~#if (op "||" (op "!" @root.compactTags) (op "!==" dictionary (get "previousDictionary")))~}}
+                        {{~#if (get "any")}}, {{else}}<i>({{/if~}}
+                        {{dictionary}}
+                        {{~#set "any" true}}{{/set~}}
+                    {{~/if~}}
+                {{~/unless~}}
+                {{~#if (get "any")}})</i> {{/if~}}
+            {{~/scope~}}
+            {{~#if only~}}({{#each only}}{{.}}{{#unless @last}}, {{/unless}}{{/each}} only) {{/if~}}
+        {{~/unless~}}
+        {{~#if (op "<=" glossary.length 1)~}}
+            {{#each glossary}}{{#formatGlossary ../dictionary}}{{#regexReplace "^[^\n]*\n" ""}}{{{.}}}{{/regexReplace}}{{/formatGlossary}}{{/each}}
+        {{~else if @root.compactGlossaries~}}
+            {{#each glossary}}{{#formatGlossary ../dictionary}}{{#regexReplace "^[^\n]*\n" ""}}{{{.}}}{{/regexReplace}}{{/formatGlossary}}{{#unless @last}} | {{/unless}}{{/each}}
+        {{~else~}}
+            <ul>{{#each glossary}}<li>{{#formatGlossary ../dictionary}}{{{.}}}{{/formatGlossary}}</li>{{/each}}</ul>
+        {{~/if~}}
+        {{~#set "previousDictionary" dictionary~}}{{~/set~}}
+    {{/inline}}
+
+    {{#*inline "audio"}}
+        {{~#if (hasMedia "audio")~}}
+            [sound:{{#getMedia "audio"}}{{/getMedia}}]
+        {{~/if~}}
+    {{/inline}}
+
+    {{#*inline "character"}}
+        {{~definition.character~}}
+    {{/inline}}
+
+    {{#*inline "dictionary"}}
+        {{~definition.dictionary~}}
+    {{/inline}}
+
+    {{#*inline "expression"}}
+        {{~#if merge~}}
+            {{~#if modeTermKana~}}
+                {{~#each definition.reading~}}
+                    {{{.}}}
+                    {{~#unless @last}}、{{/unless~}}
+                {{~else~}}
+                    {{~#each definition.expression~}}
+                        {{{.}}}
+                        {{~#unless @last}}、{{/unless~}}
+                    {{~/each~}}
+                {{~/each~}}
+            {{~else~}}
+                {{~#each definition.expression~}}
+                    {{{.}}}
+                    {{~#unless @last}}、{{/unless~}}
+                {{~/each~}}
+            {{~/if~}}
+        {{~else~}}
+            {{~#if modeTermKana~}}
+                {{~#if definition.reading~}}
+                    {{definition.reading}}
+                {{~else~}}
+                    {{definition.expression}}
+                {{~/if~}}
+            {{~else~}}
+                {{definition.expression}}
+            {{~/if~}}
+        {{~/if~}}
+    {{/inline}}
+
+    {{#*inline "furigana"}}
+        {{~#if merge~}}
+            {{~#each definition.expressions~}}
+                <span class="expression-{{termFrequency}}">{{~#furigana}}{{{.}}}{{/furigana~}}</span>
+                {{~#unless @last}}、{{/unless~}}
+            {{~/each~}}
+        {{~else~}}
+            {{#furigana}}{{{definition}}}{{/furigana}}
+        {{~/if~}}
+    {{/inline}}
+
+    {{#*inline "furigana-plain"}}
+        {{~#if merge~}}
+            {{~#each definition.expressions~}}
+                <span class="expression-{{termFrequency}}">{{~#furiganaPlain}}{{{.}}}{{/furiganaPlain~}}</span>
+                {{~#unless @last}}、{{/unless~}}
+            {{~/each~}}
+        {{~else~}}
+            {{#furiganaPlain}}{{{definition}}}{{/furiganaPlain}}
+        {{~/if~}}
+    {{/inline}}
+
+    {{~#*inline "glossary"~}}
+        <div style="text-align: left;">
+        {{~#scope~}}
+            {{~#if (op "===" definition.type "term")~}}
+                {{~> glossary-single definition brief=brief noDictionaryTag=noDictionaryTag ~}}
+            {{~else if (op "||" (op "===" definition.type "termGrouped") (op "===" definition.type "termMerged"))~}}
+                {{~#if (op ">" definition.definitions.length 1)~}}
+                    <ol>{{~#each definition.definitions~}}<li>{{~> glossary-single . brief=../brief noDictionaryTag=../noDictionaryTag ~}}</li>{{~/each~}}</ol>
+                {{~else~}}
+                    {{~#each definition.definitions~}}{{~> glossary-single . brief=../brief noDictionaryTag=../noDictionaryTag ~}}{{~/each~}}
+                {{~/if~}}
+            {{~else if (op "===" definition.type "kanji")~}}
+                {{~#if (op ">" definition.glossary.length 1)~}}
+                    <ol>{{#each definition.glossary}}<li>{{.}}</li>{{/each}}</ol>
+                {{~else~}}
+                    {{~#each definition.glossary~}}{{.}}{{~/each~}}
+                {{~/if~}}
+            {{~/if~}}
+        {{~/scope~}}
+        </div>
+    {{~/inline~}}
+
+    {{#*inline "glossary-no-dictionary"}}
+        {{~> glossary noDictionaryTag=true ~}}
+    {{/inline}}
+
+    {{#*inline "glossary-brief"}}
+        {{~> glossary brief=true ~}}
+    {{/inline}}
+
+    {{#*inline "kunyomi"}}
+        {{~#each definition.kunyomi}}{{.}}{{#unless @last}}, {{/unless}}{{/each~}}
+    {{/inline}}
+
+    {{#*inline "onyomi"}}
+        {{~#each definition.onyomi}}{{.}}{{#unless @last}}, {{/unless}}{{/each~}}
+    {{/inline}}
+
+    {{#*inline "reading"}}
+        {{~#unless modeTermKana~}}
+            {{~#if merge~}}
+                {{~#each definition.reading~}}
+                    {{{.}}}
+                    {{~#unless @last}}、{{/unless~}}
+                {{~/each~}}
+            {{~else~}}
+                {{~definition.reading~}}
+            {{~/if~}}
+        {{~/unless~}}
+    {{/inline}}
+
+    {{#*inline "sentence"}}
+        {{~#if definition.cloze}}{{definition.cloze.sentence}}{{/if~}}
+    {{/inline}}
+
+    {{#*inline "cloze-prefix"}}
+        {{~#if definition.cloze}}{{definition.cloze.prefix}}{{/if~}}
+    {{/inline}}
+
+    {{#*inline "cloze-body"}}
+        {{~#if definition.cloze}}{{definition.cloze.body}}{{/if~}}
+    {{/inline}}
+
+    {{#*inline "cloze-suffix"}}
+        {{~#if definition.cloze}}{{definition.cloze.suffix}}{{/if~}}
+    {{/inline}}
+
+    {{#*inline "tags"}}
+        {{~#mergeTags definition group merge}}{{this}}{{/mergeTags~}}
+    {{/inline}}
+
+    {{#*inline "url"}}
+        <a href="{{definition.url}}">{{definition.url}}</a>
+    {{/inline}}
+
+    {{#*inline "screenshot"}}
+        {{~#if (hasMedia "screenshot")~}}
+            <img src="{{#getMedia "screenshot"}}{{/getMedia}}" />
+        {{~/if~}}
+    {{/inline}}
+
+    {{#*inline "document-title"}}
+        {{~context.document.title~}}
+    {{/inline}}
+
+    {{! Pitch Accents }}
+    {{#*inline "pitch-accent-item"}}
+        {{~#pronunciation format=format reading=reading downstepPosition=position nasalPositions=nasalPositions devoicePositions=devoicePositions~}}{{~/pronunciation~}}
+    {{/inline}}
+
+    {{#*inline "pitch-accent-item-disambiguation"}}
+        {{~#scope~}}
+            {{~#set "exclusive" (spread exclusiveExpressions exclusiveReadings)}}{{/set~}}
+            {{~#if (op ">" (property (get "exclusive") "length") 0)~}}
+                {{~#set "separator" ""~}}{{/set~}}
+                <em>({{#each (get "exclusive")~}}
+                    {{~#get "separator"}}{{/get~}}{{{.}}}
+                {{~/each}} only) </em>
+            {{~/if~}}
+        {{~/scope~}}
+    {{/inline}}
+
+    {{#*inline "pitch-accent-list"}}
+        {{~#if (op ">" pitchCount 0)~}}
+            {{~#if (op ">" pitchCount 1)~}}{{~/if~}}
+            {{~#each pitches~}}
+                {{~#each pitches~}}
+                    {{~#if (op ">" ../../pitchCount 1)~}}{{~/if~}}
+                        {{~> pitch-accent-item-disambiguation~}}
+                        {{~> pitch-accent-item format=../../format~}}
+                    {{~#if (op ">" ../../pitchCount 1)~}}{{~/if~}}
+                {{~/each~}}
+            {{~/each~}}
+            {{~#if (op ">" pitchCount 1)~}}{{~/if~}}
+        {{~else~}}
+        {{~/if~}}
+    {{/inline}}
+
+    {{#*inline "pitch-accents"}}
+        {{~> pitch-accent-list format='text'~}}
+    {{/inline}}
+
+    {{#*inline "pitch-accent-graphs"}}
+        {{~> pitch-accent-list format='graph'~}}
+    {{/inline}}
+
+    {{#*inline "pitch-accent-positions"}}
+        {{#regexReplace "<(.|\n)*?>" ""}}{{~> pitch-accent-list format='position'~}}{{/regexReplace}}
+    {{/inline}}
+    {{! End Pitch Accents }}
+
+    {{#*inline "clipboard-image"}}
+        {{~#if (hasMedia "clipboardImage")~}}
+            <img src="{{#getMedia "clipboardImage"}}{{/getMedia}}" />
+        {{~/if~}}
+    {{/inline}}
+
+    {{#*inline "clipboard-text"}}
+        {{~#if (hasMedia "clipboardText")}}{{#regexReplace "\n(?!$)" "<br>"}}{{#getMedia "clipboardText"}}{{/getMedia}}{{/regexReplace}}{{/if~}}
+    {{/inline}}
+
+    {{#*inline "conjugation"}}
+        {{~#if definition.reasons~}}
+            {{~#each definition.reasons~}}
+                {{~#if (op ">" @index 0)}} « {{/if~}}
+                {{.}}
+            {{~/each~}}
+        {{~/if~}}
+    {{/inline}}
+
+    {{#*inline "frequencies"}}
+        {{~#if (op ">" definition.frequencies.length 0)~}}
+            <ul style="text-align: left;">
+            {{~#each definition.frequencies~}}
+                <li>
+                {{~#if (op "!==" ../definition.type "kanji")~}}
+                    {{~#if (op "||" (op ">" ../uniqueExpressions.length 1) (op ">" ../uniqueReadings.length 1))~}}(
+                        {{~#furigana expression reading~}}{{~/furigana~}}
+                    ) {{/if~}}
+                {{~/if~}}
+                {{~dictionary}}: {{frequency~}}
+                </li>
+            {{~/each~}}
+            </ul>
+        {{~/if~}}
+    {{/inline}}
+
+    {{#*inline "stroke-count"}}
+        {{~#scope~}}
+            {{~#set "found" false}}{{/set~}}
+            {{~#each definition.stats.misc~}}
+                {{~#if (op "===" name "strokes")~}}
+                    {{~#set "found" true}}{{/set~}}
+                    Stroke count: {{value}}
+                {{~/if~}}
+            {{~/each~}}
+            {{~#if (op "!" (get "found"))~}}
+                Stroke count: Unknown
+            {{~/if~}}
+        {{~/scope~}}
+    {{/inline}}
+
+    {{#*inline "part-of-speech-pretty"}}
+        {{~#if (op "===" . "v1")~}}Ichidan verb
+        {{~else if (op "===" . "v5")~}}Godan verb
+        {{~else if (op "===" . "vk")~}}Kuru verb
+        {{~else if (op "===" . "vs")~}}Suru verb
+        {{~else if (op "===" . "vz")~}}Zuru verb
+        {{~else if (op "===" . "adj-i")~}}I-adjective
+        {{~else if (op "===" . "n")~}}Noun
+        {{~else~}}{{.}}
+        {{~/if~}}
+    {{/inline}}
+
+    {{#*inline "part-of-speech"}}
+        {{~#scope~}}
+            {{~#if (op "!==" definition.type "kanji")~}}
+                {{~#set "first" true}}{{/set~}}
+                {{~#each definition.expressions~}}
+                    {{~#each wordClasses~}}
+                        {{~#unless (get (concat "used_" .))~}}
+                            {{~> part-of-speech-pretty . ~}}
+                            {{~#unless (get "first")}}, {{/unless~}}
+                            {{~#set (concat "used_" .) true~}}{{~/set~}}
+                            {{~#set "first" false~}}{{~/set~}}
+                        {{~/unless~}}
+                    {{~/each~}}
+                {{~/each~}}
+                {{~#if (get "first")~}}Unknown{{~/if~}}
+            {{~/if~}}
+        {{~/scope~}}
+    {{/inline}}
+
+    {{#*inline "search-query"}}
+        {{~#multiLine}}{{context.fullQuery}}{{/multiLine~}}
+    {{/inline}}
+
+    {{#*inline "selection-text"}}
+        {{~#if (hasMedia "selectionText")}}{{#getMedia "selectionText"}}{{/getMedia}}{{/if~}}
+    {{/inline}}
+
+    {{#*inline "sentence-furigana"}}
+        {{~#if definition.cloze~}}
+            {{~#if (hasMedia "textFurigana" definition.cloze.sentence)~}}
+                {{#getMedia "textFurigana" definition.cloze.sentence escape=false}}{{/getMedia}}
+            {{~else~}}
+                {{definition.cloze.sentence}}
+            {{~/if~}}
+        {{~/if~}}
+    {{/inline}}
+
+    {{~> (lookup . "marker") ~}}
+    ```
+
+    </details>
+
     - **MAINTAINER NOTE**: `{test}` from these handlebars will break some modern dictionaries. An alternative to these handlebars is the [JPMN Handlebars Package](https://aquafina-water-bottle.github.io/jp-mining-note-prerelease/jpmnhandlebars/).
-1. Click `Configure custom CSS` under `Popup Appearance`. Use [my CSS](https://pastebin.com/raw/RxB0CEnS) (modified version of [full-nord-theme](https://learnjapanese.moe/yomicss/#example-full-nord-theme)) or create your own Yomichan CSS [here](https://learnjapanese.moe/yomicss/). Paste your CSS in `Popup CSS`.
+
+1. Click `Configure custom CSS` under `Popup Appearance`. Paste the following CSS in `Popup CSS` (modified version of [full-nord-theme](https://learnjapanese.moe/yomicss/#example-full-nord-theme)):
+
+    <details>
+    <summary>CSS <i>(click here)</i></summary>
+
+    ```css
+    body {
+        background: #2E3440;
+        font-family: Yu Mincho;
+    }
+
+    .kanji-link {
+        color: #ebffff;
+    }
+
+    .source-text {
+        color: #ebffff;
+    }
+
+    .gloss-content {
+        color: #ebffff;
+    }
+
+    :root {
+        --background-color: #2E3440;
+        --tag-text-color: white;
+        --tag-border-color: transparent
+        --tag-default-background-color: #88C0D0;
+        --tag-name-background-color: #88C0D0;
+        --tag-expression-background-color: #88C0D0;
+        --tag-popular-background-color: #88C0D0;
+        --tag-frequent-background-color: #88C0D0;
+        --tag-archaism-background-color: #88C0D0;
+        --tag-dictionary-background-color: #8FBCBB;
+        --tag-frequency-background-color: #81A1C1;
+        --tag-part-of-speech-background-color: #88C0D0;
+        --tag-search-background-color: #88C0D0;
+        --tag-pitch-accent-dictionary-background-color: #5E81AC;
+        --accent-color: #8FBCBB;
+        --text-color: #ebffff;
+        --pitch-accent-annotation-color: #ebffff;
+        --input-background-color: #3B4252;
+        --reason-text-color: #5E81AC;
+        --notification-text-color: #ebffff;
+        --notification-background-color: #3B4252;
+        --progress-bar-track-color: #D8DEE9;
+        --light-border-color: #E5E9F0;
+        --sidebar-background-color: #2E3440;
+        --sidebar-button-background-color: transparent;
+        --sidebar-button-background-color-hover: #81A1C1;
+        --sidebar-button-background-color-active: #6d88a3;
+        --sidebar-button-danger-background-color: transparent;
+        --sidebar-button-danger-background-color-hover: #BF616A;
+        --sidebar-button-danger-background-color-active: #8a373f;
+        --sidebar-button-icon-color: #ebffff;
+        --sidebar-button-disabled-icon-color: #808c8c;
+        --sidebar-button-danger-icon-color: #ebffff;
+
+    }
+
+    ::-webkit-scrollbar {
+        display: none;
+    }
+    ```
+
+    </details>
+
+    <sup>(or create your own Yomichan CSS [here](https://learnjapanese.moe/yomicss/))</sup>
+
 1. To use Yomichan on word such as 懇々, Click `Configure custom text replacement patterns` under `Translation`. Click `Add` and fill in with these values:
     Pattern: `(.)々`
     Replacement: `$1$1`

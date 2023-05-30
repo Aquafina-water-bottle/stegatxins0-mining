@@ -1,5 +1,8 @@
 # Changelog
 
+## 30 May 2023
+- Replaced some pastebin links with the raw text (for portability reasons)
+
 ## 26 May 2023
 - Moved the guide into this github repository, primarily to open it for contribution and better archival purposes.
 - Downloaded all imgur images into `assets/`

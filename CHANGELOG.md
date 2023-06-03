@@ -1,5 +1,8 @@
 # Changelog
 
+## 02 June 2023
+- Changed normalization from `0.5` -> `0.35` to match the normalized audio from the Local Audio Server for Yomichan add-on
+
 ## 30 May 2023
 - Replaced some pastebin links with the raw text (for portability reasons)
 

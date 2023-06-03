@@ -639,7 +639,7 @@ If you want your card to be as high quality as possible, you might find yourself
     ![](assets/sharex_audio_codec.jpg)
 1. At `Command line preview`, check `Use custom commands` and replace everything in text with the command below to trim silence and normalize the audio.
     ```
-    -y -rtbufsize 100M -f dshow -i audio="virtual-audio-capturer" -c:a libmp3lame -af "silenceremove=1:0:-50dB, speechnorm=p=0.5:e=6.25:r=0.0001:l=1" -qscale:a 4 "$output$"
+    -y -rtbufsize 100M -f dshow -i audio="virtual-audio-capturer" -c:a libmp3lame -af "silenceremove=1:0:-50dB, speechnorm=p=0.35:e=6.25:r=0.0001:l=1" -qscale:a 4 "$output$"
     ```
     (Thanks to [Mansive#0727](https://discord.com/channels/617136488840429598/1110407709876027432/1110411717105684581) and [Quizmaster](https://animecards.site/media/#hotkey-for-audio) for these!)
     <details>
@@ -652,7 +652,7 @@ If you want your card to be as high quality as possible, you might find yourself
         * Thanks to [Mansive#0727](https://discord.com/channels/617136488840429598/778430038159655012/980272369698500609) for this fix!
     1. Slightly reduces volume + normalize audio
         ```
-        -y -rtbufsize 100M -f dshow -i audio="virtual-audio-capturer" -c:a libmp3lame -af "silenceremove=1:0:-50dB, speechnorm=p=0.5:e=6.25:r=0.0001:l=1, volume=0.9" -qscale:a 4 "$output$"
+        -y -rtbufsize 100M -f dshow -i audio="virtual-audio-capturer" -c:a libmp3lame -af "silenceremove=1:0:-50dB, speechnorm=p=0.35:e=6.25:r=0.0001:l=1, volume=0.9" -qscale:a 4 "$output$"
         ```
     1. The original (does not correctly reduce the volume, and does not normalize audio):
         ```

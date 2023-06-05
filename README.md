@@ -1,7 +1,7 @@
 # Stegatxins0's Mining Setup
 <sup>AKA "My Mining Setup"</sup>
 
-This simply serves to be a open-contribution version of stegatxins0's popular guide to sentence mining,
+This simply serves to be a publicly archived version of stegatxins0's popular guide to sentence mining,
 because the original guide no longer seems to be maintained.
 If stegatxins0 ever sees this, thank you for creating the original guide!
 
@@ -15,9 +15,7 @@ ShareX with Anki-Connect to automatically export audio and images into the most 
 - If you have any questions, please make a thread in the questions forum in
     [TheMoeWay](https://learnjapanese.moe/join/).
 
-Please feel free to contribute! I will likely not be maintaining this repository outside of merging pull requests, so if you want any changes, please submit a pull request.
-
-I recommend against contributing major reworks of sections, even if is the current best thing. This is in order to maintain this repo's main purpose of archiving the guide. If you consider something to be out-dated, instead of changing this guide, link to a different page that describes the alternative setup. These will be marked with "MAINTAINER NOTE".
+Please feel free to contribute! I will likely not be maintaining this repository outside of merging pull requests, so if you want any changes, please submit a pull request. I recommend against contributing major reworks of sections, even if is the current best thing, in order to maintain this repo's main purpose of archiving the guide. If you consider something to be out-dated, instead of changing this guide, link to a different page that describes the alternative setup. These should be marked with "MAINTAINER NOTE".
 
 > **Note**:
 > This is NOT *my* mining setup (mine can be found

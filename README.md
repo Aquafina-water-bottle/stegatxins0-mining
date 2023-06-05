@@ -635,30 +635,11 @@ If you want your card to be as high quality as possible, you might find yourself
     ![](assets/sharex_audio_sources.jpg)
 1. Change `Audio codec` to `MP3`
     ![](assets/sharex_audio_codec.jpg)
-1. At `Command line preview`, check `Use custom commands` and replace everything in text with the command below to trim silence and normalize the audio.
+1. At `Command line preview`, check `Use custom commands` and replace everything in text with the command below to trim any beginning silence and slightly reduces the audio.
     ```
-    -y -rtbufsize 100M -f dshow -i audio="virtual-audio-capturer" -c:a libmp3lame -af "silenceremove=1:0:-50dB, loudnorm=I=-16:TP=-6.2:LRA=11:dual_mono=true" -qscale:a 4 "$output$"
+    -y -rtbufsize 100M -f dshow -i audio="virtual-audio-capturer" -c:a libmp3lame -af "silenceremove=1:0:-50dB, , loudnorm=I=-16:TP=-6.2:LRA=11:dual_mono=true" -qscale:a 4 "$output$"
     ```
-    (Thanks to [Mansive#0727](https://discord.com/channels/617136488840429598/1110407709876027432/1110411717105684581) and [Quizmaster](https://animecards.site/media/#hotkey-for-audio) for these!)
-    <details>
-    <summary>Alternative FFmpeg Flags <i>(click here)</i></summary>
-
-    1. Reduces volume, does not normalize audio
-        ```
-        -y -rtbufsize 100M -f dshow -i audio="virtual-audio-capturer" -c:a libmp3lame -af "silenceremove=1:0:-50dB, volume=0.9" -qscale:a 4 "$output$"
-        ```
-        * Thanks to [Mansive#0727](https://discord.com/channels/617136488840429598/778430038159655012/980272369698500609) for this fix!
-    1. Slightly reduces volume + normalize audio
-        ```
-        -y -rtbufsize 100M -f dshow -i audio="virtual-audio-capturer" -c:a libmp3lame -af "silenceremove=1:0:-50dB, , loudnorm=I=-16:TP=-6.2:LRA=11:dual_mono=true" -qscale:a 4 "$output$"
-        ```
-    1. The original (does not correctly reduce the volume, and does not normalize audio):
-        ```
-        -y -rtbufsize 100M -f dshow -i audio="virtual-audio-capturer" -c:a libmp3lame -filter:a "volume=0.9" -af silenceremove=1:0:-50dB -qscale:a 4 "$output$"
-        ```
-         - [Original Source](https://animecards.site/media/#hotkey-for-audio)
-
-    </details>
+    MAINTAINER NOTE: Previously, this was edited to be normalized by default. However, normalizing audio proved to be a bit more difficult than expected. There will be something linked in the future to properly normalize audio.
 1. Close the window. Click on `Actions` tab. Check `Override actions`. Click `Add`. A new window will pop up. Fill in the following values:
     - **Name**: `anki-audio` (or anything you want)
     - **File path**:

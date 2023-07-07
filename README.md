@@ -637,7 +637,7 @@ If you want your card to be as high quality as possible, you might find yourself
     ![](assets/sharex_audio_codec.jpg)
 1. At `Command line preview`, check `Use custom commands` and replace everything in text with the command below to trim any beginning silence and slightly reduces the audio.
     ```
-    -y -rtbufsize 100M -f dshow -i audio="virtual-audio-capturer" -c:a libmp3lame -af "silenceremove=1:0:-50dB, loudnorm=I=-16:TP=-6.2:LRA=11:dual_mono=true" -qscale:a 4 "$output$"
+    -y -rtbufsize 100M -f dshow -i audio="virtual-audio-capturer" -c:a libmp3lame -af "silenceremove=1:0:-50dB" -qscale:a 4 "$output$"
     ```
     MAINTAINER NOTE: Previously, this was edited to be normalized by default. However, normalizing audio proved to be a bit more difficult than expected. There will be something linked in the future to properly normalize audio.
 1. Close the window. Click on `Actions` tab. Check `Override actions`. Click `Add`. A new window will pop up. Fill in the following values:

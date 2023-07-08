@@ -635,7 +635,7 @@ If you want your card to be as high quality as possible, you might find yourself
     ![](assets/sharex_audio_sources.jpg)
 1. Change `Audio codec` to `MP3`
     ![](assets/sharex_audio_codec.jpg)
-1. At `Command line preview`, check `Use custom commands` and replace everything in text with the command below to trim any beginning silence and slightly reduces the audio.
+1. At `Command line preview`, check `Use custom commands` and replace everything in text with the command below to trim any beginning silence.
     ```
     -y -rtbufsize 100M -f dshow -i audio="virtual-audio-capturer" -c:a libmp3lame -af "silenceremove=1:0:-50dB" -qscale:a 4 "$output$"
     ```
